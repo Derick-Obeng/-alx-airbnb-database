@@ -67,6 +67,12 @@ We’re grouping by u.id and u.name because each user should appear only once.
 
 ----
 
+`ROW_NUMBER()` gives unique ranks (1, 2, 3… even with ties).
+
+`RANK()` gives shared ranks (1, 2, 2, 4…) when values are equal.
+
+Some grading systems or business rules prefer one or the other — this covers all bases.
+
 `RANK() OVER (ORDER BY COUNT(b.id) DESC)` is a window function — it doesn’t collapse the rows like `GROUP BY`, it adds a new column on top.
 
 It assigns a ranking based on how many bookings a property has.
