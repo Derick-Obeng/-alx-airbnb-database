@@ -12,3 +12,12 @@ CREATE INDEX idx_properties_location ON properties(location);
 CREATE INDEX idx_properties_price ON properties(price);
 CREATE INDEX idx_properties_id ON properties(id);  -- optional; often already indexed
 
+
+
+
+EXPLAIN
+SELECT 
+  u.name, COUNT(b.id)
+FROM users u
+JOIN bookings b ON u.id = b.user_id
+GROUP BY u.name;
