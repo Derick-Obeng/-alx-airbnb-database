@@ -20,3 +20,15 @@ LEFT JOIN bookings b ON p.id = b.property_id
 GROUP BY p.id, p.title
 ORDER BY booking_rank;
 
+
+SELECT 
+  p.id AS property_id,
+  p.title,
+  COUNT(b.id) AS total_bookings,
+  RANK() OVER (ORDER BY COUNT(b.id) DESC) AS rank_with_ties
+FROM properties p
+LEFT JOIN bookings b ON p.id = b.property_id
+GROUP BY p.id, p.title
+ORDER BY rank_with_ties;
+
+
