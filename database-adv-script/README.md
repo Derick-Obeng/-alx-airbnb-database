@@ -80,3 +80,19 @@ It assigns a ranking based on how many bookings a property has.
 Properties with the same number of bookings get the same rank `(RANK is like 1st, 2nd, 2nd, 4th…)`.
 
 If you want strict 1, 2, 3, 4 regardless of ties, swap `RANK()` for `ROW_NUMBER()`.
+
+-----------------------------
+
+ ##### Sample Output Before Index (slow scan)
+Seq Scan on bookings  (cost=0.00..25000.00 rows=1000000 width=8)
+
+##### Sample Output After Index (fast access)
+Index Scan using idx_bookings_user_id on bookings  (cost=0.00..5000.00 rows=100000 width=8)
+
+Indexes = shortcuts for the database engine.
+
+They don’t improve inserts (can even slow them down a bit) but make reads, joins, and filters way faster.
+
+Use EXPLAIN to actually prove performance gains — never just guess.
+
+
