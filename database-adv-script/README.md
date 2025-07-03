@@ -1,6 +1,6 @@
 ## The Read 
 
-### `INNER JOIN` only gives you rows where there's a match in both bookings and users.
+`INNER JOIN` only gives you rows where there's a match in both bookings and users.
 
 So this returns only bookings that are linked to actual users.
 
